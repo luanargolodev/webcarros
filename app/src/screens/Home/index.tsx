@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Header } from "../../components/Header";
 
 export function Home() {
   return (
     <View>
-      <Text>Página HOME</Text>
+      <Header />
     </View>
   )
 }
