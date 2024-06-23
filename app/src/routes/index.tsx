@@ -6,9 +6,11 @@ import { Favorites } from "../screens/Favorites";
 
 export type StackParamList = {
   Home: undefined;
-  Details: undefined;
+  Details: {
+    id: string;
+  };
   Favorites: undefined;
-}
+};
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
@@ -31,6 +33,5 @@ export function Routes() {
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
-  )
+  );
 }
-

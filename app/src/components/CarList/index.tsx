@@ -7,6 +7,9 @@ import {
   Image,
 } from "react-native";
 import { CarProps } from "../../types/cars.type";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackParamList } from "../../routes";
 
 interface Props {
   data: CarProps;
@@ -14,9 +17,24 @@ interface Props {
 }
 
 export function CarList({ data, widthScreen }: Props) {
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
+
+  function handleNavigate() {
+    const { id } = data;
+
+    navigation.navigate("Details", { id });
+  }
+
   return (
-    <Pressable style={[styles.container, { width: widthScreen }]}>
-      <Image style={styles.cover} source={{ uri: data.images[0].url }} />
+    <Pressable
+      style={[styles.container, { width: widthScreen }]}
+      onPress={handleNavigate}
+    >
+      <Image
+        style={styles.cover}
+        source={{ uri: data.images[0].url }}
+        resizeMode="cover"
+      />
       <Text style={[styles.title, { marginTop: 14 }]}>{data.name}</Text>
       <Text style={styles.text}>
         {data.year} - {data.km} km

@@ -14,3 +14,11 @@ export interface CarProps {
   uid: string;
   images: CarImageProps[];
 }
+
+export interface CarDetailsProps extends CarProps {
+  model: string;
+  created: string;
+  description: string;
+  owner: string;
+  whatsapp: string;
+}
